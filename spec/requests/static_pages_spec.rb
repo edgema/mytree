@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe "Static pages" do
 
+	let(:base_title) { "tomorrowtree" }
+
   describe "Home page" do
 
     it "should have the h1 'tomorrowtree'" do
@@ -42,5 +44,19 @@ describe "Static pages" do
       page.should have_selector('title',
                     :text => "About")
     end
+  end
+
+  describe "Contact page" do
+
+  	it "should have the h1 'Contact us'" do
+  		visit '/static_pages/contact'
+  		page.should have_selector('h1', :text => 'Contact us')
+  	end
+
+  	it "should have the title 'Contact us'" do
+  		visit '/static_pages/contact'
+  		page.should have_selector('title', 
+  			:text => "Contact us")
+  	end
   end
 end
